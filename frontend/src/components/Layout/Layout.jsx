@@ -1,17 +1,16 @@
-import React from "react";
-
-import Header from "../Header/Header";  // ✅ Fix Path
-import Routers from "../../router/Routers"; // ✅ Fix Path
-import Footer from "../Footer/Footer"; // ✅ Fix Path
+import React from 'react'
+import Header from './../Header/Header'
+import Routers from '../../router/Routers'
+import Footer from './../Footer/Footer'
 
 const Layout = () => {
-  return (
-    <>
-      <Header />
-      <Routers />
-      <Footer />
-    </>
-  );
-};
+   return (
+      <>
+         <Header />
+         <Routers />
+         <Footer />      
+      </>
+   )
+}
 
-export default Layout;
+export default Layout

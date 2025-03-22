@@ -1,12 +1,12 @@
-import React from "react";
-import { Container, Row, Button } from "reactstrap"; 
-import { NavLink, Link } from "react-router-dom"; 
-
-import logo from "../../assets/images/logo.png";
+import React, { useEffect, useRef, useContext } from 'react'
+import { Container, Row, Button } from 'reactstrap'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
+import Logo from '../../assets/images/logo.png'  // you can change logo image from here
+import "./header.css"
 
 const nav_links = [
   { path: "/home", display: "Home" },
-  { path: "#", display: "About" },
+  { path: "/about", display: "About" },
   { path: "/tours", display: "Tours" },
 ];
 
@@ -18,7 +18,7 @@ const Header = () => {
           <div className="nav_wrapper d-flex align-items-center justify-content-between">
             {/*------ Logo ------*/}
             <div className="logo">
-              <img src={logo} alt="Logo" />
+              <img src={Logo} alt="Logo" />
             </div>
             {/*------ Logo end ------*/}
 
@@ -26,8 +26,15 @@ const Header = () => {
             <div className="navigation">
               <ul className="menu d-flex align-items-center gap-5">
                 {nav_links.map((item, index) => (
-                  <li className="nav_item" key={index}>
-                    <NavLink to={item.path}>{item.display}</NavLink> {/* ✅ Fixed: Changed Navlink to NavLink */}
+                  <li className="nav__item" key={index}>
+                    <NavLink
+                      to={item.path}
+                      className={(navClass) =>
+                        navClass.isActive ? "active__link" : ""
+                      }
+                    >
+                      {item.display}
+                    </NavLink>
                   </li>
                 ))}
               </ul>
@@ -44,7 +51,9 @@ const Header = () => {
                 </Button>
               </div>
 
-              <span className="mobile_menu"></span>
+              <span className="mobile_menu">
+                <i className="ri-menu-line"></i>
+              </span>
             </div>
           </div>
         </Row>
